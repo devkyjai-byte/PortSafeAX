@@ -29,6 +29,10 @@
 
 ## GitHub 자동 검증
 
+main의 Windows·Ubuntu 검사가 **모두 성공하면** `Save verified demo download` 작업이 시연 ZIP과 `build_receipt.json`을 Actions 산출물로30일간 보관합니다. 실행 상세 페이지의 `portsafe-demo-커밋번호`를 내려받아 바깥 압축을 푼 뒤 내부 `PortSafeAX_offline_demo.zip`도 풀고 `index.html`을 여세요. 버전 확인서에는 코드 커밋·검사 실행 URL·시연 ZIP의 SHA-256이 있습니다. 전자서명 또는 현장 검증 인증서는 아닙니다. PR 검사에서는 다운로드 산출물을 만들지 않습니다. 기획서·공모전 원본은 포함하지 않습니다.
+
+다운로드는 개발·내부 검토용이며 심사용 무로그인 실행 URL을 제공하는 기능이 아닙니다. 보관 기간 전에 필요한 파일을 별도로 보관하세요. 구성 참고: [GitHub 공식 산출물 업로드 도구](https://github.com/actions/upload-artifact).
+
 GitHub Actions의 `Validate MVP`는 main 업로드·PR·수동 실행 시 Windows와 Ubuntu의 Python 3.12에서 고정 의존성 설치, 의존성 충돌 검사, 전체 테스트, 합성 시연 재생성 및 저장된 결과와의 일치 검사를 수행합니다. 코드 변경으로 시연 결과가 달라지면 시연 파일도 재생성해 함께 커밋해야 합니다. 실행 결과는 [Actions](https://github.com/devkyjai-byte/PortSafeAX/actions/workflows/validate.yml)에서 확인하세요. 이는 소프트웨어 검사이며 현장 안전성이나 센서 성능 검증은 아닙니다.
 
 설정 방식 참고: [GitHub 공식 Python 자동 검사 안내](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).

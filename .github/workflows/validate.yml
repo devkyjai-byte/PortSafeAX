@@ -54,3 +54,49 @@ jobs:
         run: |
           python -m scripts.package_demo
           python -m scripts.package_demo --verify deliverables/PortSafeAX_offline_demo.zip
+
+  demo-download:
+    name: Save verified demo download
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build offline demo and provenance receipt
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          BUILD_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python -m scripts.package_demo
+          python -m scripts.package_demo --verify deliverables/PortSafeAX_offline_demo.zip
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          package = Path('deliverables/PortSafeAX_offline_demo.zip')
+          receipt = dict(commit=os.environ['BUILD_COMMIT'], run_url=os.environ['BUILD_RUN_URL'],
+                         package=package.name, sha256=hashlib.sha256(package.read_bytes()).hexdigest(),
+                         data_origin='SIMULATED', model_type='UNVALIDATED_RULES',
+                         note='Automated software checks passed on Windows and Ubuntu. Browser/field validation not included. Not a digital signature.')
+          Path('deliverables/build_receipt.json').write_text(json.dumps(receipt, indent=2), encoding='utf-8')
+          PY
+      - name: Save downloadable package
+        id: demo
+        uses: actions/upload-artifact@v7
+        with:
+          name: portsafe-demo-${{ github.sha }}
+          path: |
+            deliverables/PortSafeAX_offline_demo.zip
+            deliverables/build_receipt.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Show download instructions
+        env:
+          DEMO_URL: ${{ steps.demo.outputs.artifact-url }}
+        run: |
+          echo '## PortSafe AX offline demo' >> "$GITHUB_STEP_SUMMARY"
+          echo "[Download demo artifact]($DEMO_URL)" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Extract the artifact, then extract PortSafeAX_offline_demo.zip and open index.html. Synthetic data; browser and field validation remain separate. Retained for 30 days.' >> "$GITHUB_STEP_SUMMARY"
