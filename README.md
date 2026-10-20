@@ -21,7 +21,13 @@
 
 **모든 데이터는 합성 데이터입니다. 검증된 ML 모델은 없습니다.** 작업부담·피로는 설명 가능한 시연용 규칙 계산값입니다. 예측 정확도, 사고 감소율, 임상적 효과를 주장하지 않습니다. SmokeFree AI의 코드·데이터·환경·산출물을 사용하지 않으며 이 폴더의 가상환경만 사용합니다.
 
-## 자동 검증
+## 오프라인 시연 패키지
+
+개발 환경에서 `python -m scripts.package_demo`를 실행하면 `deliverables/PortSafeAX_offline_demo.zip`이 생성됩니다. 전체 압축을 푼 뒤 `index.html`을 여세요. 두 시연 HTML·합성 JSON·열람 안내와 파일별 SHA-256 목록을 포함합니다. 실행 앱·관리자 검토 기록·기획서·공모전 원본은 포함하지 않습니다. ZIP은 Git에 올리지 않으며 생성 도구와 검사를 관리합니다.
+
+무결성 확인: `python -m scripts.package_demo --verify deliverables/PortSafeAX_offline_demo.zip`. 해시는 손상·차이 확인용으로 제작자 인증이나 현장 검증을 뜻하지 않습니다. 필수 제출서류 묶음도 아닙니다.
+
+## GitHub 자동 검증
 
 GitHub Actions의 `Validate MVP`는 main 업로드·PR·수동 실행 시 Windows와 Ubuntu의 Python 3.12에서 고정 의존성 설치, 의존성 충돌 검사, 전체 테스트, 합성 시연 재생성 및 저장된 결과와의 일치 검사를 수행합니다. 코드 변경으로 시연 결과가 달라지면 시연 파일도 재생성해 함께 커밋해야 합니다. 실행 결과는 [Actions](https://github.com/devkyjai-byte/PortSafeAX/actions/workflows/validate.yml)에서 확인하세요. 이는 소프트웨어 검사이며 현장 안전성이나 센서 성능 검증은 아닙니다.
 
