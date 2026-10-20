@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
@@ -84,9 +85,29 @@ def verify(path):
     return manifest
 
 
+def write_receipt(package, destination, commit=None, run_url=None):
+    package = Path(package)
+    receipt = dict(
+        commit=commit or os.environ.get('GITHUB_SHA', 'LOCAL'),
+        run_url=run_url or os.environ.get('GITHUB_SERVER_URL', ''),
+        package=package.name,
+        sha256=digest(package.read_bytes()),
+        data_origin='SIMULATED',
+        model_type='UNVALIDATED_RULES',
+        note='Automated software checks do not include browser or field validation. Not a digital signature.',
+    )
+    destination = Path(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    return receipt
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verify', type=Path)
+    parser.add_argument('--receipt', type=Path, help='Write a provenance receipt for the generated package')
+    parser.add_argument('--commit', help='Commit SHA to include in the receipt')
+    parser.add_argument('--run-url', help='Verification run URL to include in the receipt')
     args = parser.parse_args()
     if args.verify:
         verify(args.verify)
@@ -94,3 +115,6 @@ if __name__ == '__main__':
     else:
         result = build(ROOT / 'deliverables/PortSafeAX_offline_demo.zip')
         print(f'Built {result.name}; SHA-256: {digest(result.read_bytes())}')
+        if args.receipt:
+            write_receipt(result, args.receipt, args.commit, args.run_url)
+            print(f'Wrote {args.receipt}')

@@ -71,18 +71,8 @@ jobs:
           BUILD_COMMIT: ${{ github.sha }}
           BUILD_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          python -m scripts.package_demo
+          python -m scripts.package_demo --receipt deliverables/build_receipt.json --commit "$BUILD_COMMIT" --run-url "$BUILD_RUN_URL"
           python -m scripts.package_demo --verify deliverables/PortSafeAX_offline_demo.zip
-          python - <<'PY'
-          import hashlib, json, os
-          from pathlib import Path
-          package = Path('deliverables/PortSafeAX_offline_demo.zip')
-          receipt = dict(commit=os.environ['BUILD_COMMIT'], run_url=os.environ['BUILD_RUN_URL'],
-                         package=package.name, sha256=hashlib.sha256(package.read_bytes()).hexdigest(),
-                         data_origin='SIMULATED', model_type='UNVALIDATED_RULES',
-                         note='Automated software checks passed on Windows and Ubuntu. Browser/field validation not included. Not a digital signature.')
-          Path('deliverables/build_receipt.json').write_text(json.dumps(receipt, indent=2), encoding='utf-8')
-          PY
       - name: Save downloadable package
         id: demo
         uses: actions/upload-artifact@v7
