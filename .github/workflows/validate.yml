@@ -29,6 +29,14 @@ jobs:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements-lock.txt
+      - name: Create isolated environment
+        run: |
+          python -m venv .ci-venv
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            echo "$GITHUB_WORKSPACE/.ci-venv/Scripts" >> "$GITHUB_PATH"
+          else
+            echo "$GITHUB_WORKSPACE/.ci-venv/bin" >> "$GITHUB_PATH"
+          fi
       - name: Install pinned dependencies
         run: python -m pip install -r requirements-lock.txt
       - name: Check dependencies
