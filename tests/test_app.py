@@ -13,6 +13,8 @@ def test_dashboard_all_scenarios():
         app.selectbox(key='allocation_scenario').select(scenario).run(timeout=30)
         assert not app.exception
         assert next(m.value for m in app.metric if m.label == '제약 위반 배정 수') == '0'
+        groups = next(x.value for x in app.dataframe if '원인 구분' in x.value.columns and '미배정 작업 수' in x.value.columns)
+        assert int(groups['미배정 작업 수'].sum()) == int(next(m.value for m in app.metric if m.label == '미배정 작업 수'))
     app.number_input[0].set_value(99).run(timeout=30)
     assert not app.exception
 

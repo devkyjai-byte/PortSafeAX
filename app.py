@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 from portsafe.engine import allocate, allocate_reference, audit, metrics, score
 from portsafe.synthetic import generate
+from portsafe.explanations import unassigned_summary
 from portsafe.proximity import CASES, evaluate
 from portsafe.review import snapshot_id, record_review, export_reviews, restore_reviews, review_summary, MAX_REVIEW_BYTES
 
@@ -47,6 +48,24 @@ with tabs[0]:
                   workers=[asdict(w) for w in workers], tasks=[asdict(t) for t in tasks], baseline=baseline)
     st.download_button('시연 결과 JSON 다운로드', json.dumps(report, ensure_ascii=False, indent=2), 'portsafe_demo_report.json', 'application/json')
 with tabs[1]:
+    st.subheader('미배정 원인 요약')
+    pending = unassigned_summary(plan, tasks)
+    st.dataframe(pd.DataFrame([{'원인 구분': category, '미배정 작업 수': count}
+                               for category, count in pending['groups'].items()]), hide_index=True)
+    if pending['rows']:
+        st.dataframe(pd.DataFrame([{
+            '작업': row['task_id'], '필요 자격': row['qualification'],
+            '우선순위(3이 먼저)': row['priority'], '작업시간(시간)': row['duration_hours'],
+            '원인 구분': row['category'], '전체 후보 수': row['candidate_count'],
+            '자격 충족 후보 수': row['qualified_count'],
+            '시간 초과 후보 수': row['qualified_limit_counts']['근무시간 상한 초과'],
+            '피로 초과 후보 수': row['qualified_limit_counts']['피로 상한 초과'],
+            '부담 초과 후보 수': row['qualified_limit_counts']['최대부하 상한 초과'],
+            '관리자 입력 확인 항목': row['check']
+        } for row in pending['rows']]), hide_index=True)
+    else:
+        st.info('현재 계산에서 미배정 작업은 없습니다. 실제 현장 안전을 확인한 결과는 아닙니다.')
+    st.caption('작업별 배정 판단 시점의 후보 사유를 집계합니다. 상한 초과 후보 수는 자격 충족 후보만 대상으로 하며 한 사람이 여러 상한에 중복 집계될 수 있습니다. 원인 구분별 작업 수는 중복되지 않습니다. 입력 확인 항목은 배정 가능성 보장이나 상한 완화 지시가 아닙니다.')
     st.subheader('작업별 제안과 제약조건 확인')
     st.dataframe(pd.DataFrame([{'작업': r['task'], '배정 작업자': r['worker'] or '미배정', '결과': r['reason']} for r in plan['assignments']]), hide_index=True, use_container_width=True)
     for row in plan['assignments']:
