@@ -4,7 +4,7 @@
 </style><main><div class="pill">PORTSAFE AX / 핵심 기능 시연 0.1</div><h1>작업배정의 근거와 미배정 이유를 함께 확인합니다</h1>
 <div class="notice"><strong>합성 데이터 · 미검증 규칙 · 학습된 AI 모델 없음</strong><br>기존 배정 엔진으로 계산한 세 사례를 탐색합니다. 입력 편집이나 실시간 재계산 기능은 없으며 실제 현장 배치·안전성 검증 자료가 아닙니다.</div>
 <label for="scenario">상황 선택 </label><select id="scenario"><option value="standard">기본 작업배정</option><option value="shortage">자격 인력 부족</option><option value="fatigue">높은 초기 상태값</option></select>
-<nav><a href="#comparison">전후 비교</a><a href="#assignments">배정 근거</a><a href="#inputs">입력과 규칙</a><a href="#limits">범위와 한계</a></nav>
+<nav><a href="index.html">← 시연 시작</a><a href="#comparison">전후 비교</a><a href="#assignments">배정 근거</a><a href="#inputs">입력과 규칙</a><a href="#limits">범위와 한계</a></nav>
 <section id="comparison" class="card" aria-live="polite"><h2 id="title"></h2><div id="kpis" class="grid"></div>
 <p class="muted">기준안은 두 작업자에게 집중 배정한 의도적 불균형 예시입니다. 실제 운영 수준이나 공정한 성능 비교 기준이 아닙니다.</p><div id="metrics" class="scroll"></div>
 <h3>동일 제약의 단순 배정안과 비교</h3><p>동일한 입력·작업 순서·자격·상한을 적용합니다. 단순안은 ID순 첫 적격자, 재배치안은 배정 후 최대 상한 사용비율이 작은 후보를 선택합니다. 실제 현장 방식이나 최적해를 대표하지 않습니다.</p><div id="reference" class="scroll"></div>

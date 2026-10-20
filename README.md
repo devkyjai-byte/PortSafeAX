@@ -5,6 +5,8 @@
 
 ## 공모전 원문 분석 및 제출 준비
 
+- **[통합 시연 시작 화면](demo/index.html)**: 저장소를 내려받아 `demo/index.html`을 열면 작업배정과 접근 경고 시연을 선택할 수 있습니다. GitHub에서는 소스가 표시되며 실행 사이트를 배포한 것은 아닙니다.
+
 - [핵심 작업배정 HTML 시연](demo/PortSafeAX_allocation_demo.html): A/B/C/E/F의3개 합성 결과를 설치 없이 탐색하도록 제작했습니다. [열람안내](demo/열람안내.md)의 검수 상태와 사용 순서를 확인하세요.
 
 - [공고·공식 양식 분석](docs/CONTEST_REQUIREMENTS.md): 일정, 자격, 심사 배점, 필수 서류, 원문 문단 근거, 미확인 사항.
