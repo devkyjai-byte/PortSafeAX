@@ -1,7 +1,7 @@
 {
   "standard": {
     "title": "기본 작업배정",
-    "version": "allocation-evidence-0.1",
+    "version": "allocation-evidence-0.2",
     "data_origin": "SIMULATED",
     "model_type": "UNVALIDATED_RULES",
     "seed": 42,
@@ -758,11 +758,19 @@
         }
       }
     },
+    "unassigned": {
+      "groups": {
+        "후보 작업자 없음": 0,
+        "필요 자격 충족 후보 없음": 0,
+        "자격 충족 후보의 누적 상한 초과": 0
+      },
+      "rows": []
+    },
     "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
   },
   "shortage": {
     "title": "자격 인력 부족",
-    "version": "allocation-evidence-0.1",
+    "version": "allocation-evidence-0.2",
     "data_origin": "SIMULATED",
     "model_type": "UNVALIDATED_RULES",
     "seed": 42,
@@ -1291,11 +1299,80 @@
         }
       }
     },
+    "unassigned": {
+      "groups": {
+        "후보 작업자 없음": 0,
+        "필요 자격 충족 후보 없음": 4,
+        "자격 충족 후보의 누적 상한 초과": 0
+      },
+      "rows": [
+        {
+          "task_id": "T09",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 1,
+          "category": "필요 자격 충족 후보 없음",
+          "candidate_count": 2,
+          "qualified_count": 0,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 0,
+            "최대부하 상한 초과": 0
+          },
+          "check": "작업의 필요 자격과 작업자 보유 자격 입력 확인"
+        },
+        {
+          "task_id": "T06",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 1.5,
+          "category": "필요 자격 충족 후보 없음",
+          "candidate_count": 2,
+          "qualified_count": 0,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 0,
+            "최대부하 상한 초과": 0
+          },
+          "check": "작업의 필요 자격과 작업자 보유 자격 입력 확인"
+        },
+        {
+          "task_id": "T03",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 1.5,
+          "category": "필요 자격 충족 후보 없음",
+          "candidate_count": 2,
+          "qualified_count": 0,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 0,
+            "최대부하 상한 초과": 0
+          },
+          "check": "작업의 필요 자격과 작업자 보유 자격 입력 확인"
+        },
+        {
+          "task_id": "T12",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 0.5,
+          "category": "필요 자격 충족 후보 없음",
+          "candidate_count": 2,
+          "qualified_count": 0,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 0,
+            "최대부하 상한 초과": 0
+          },
+          "check": "작업의 필요 자격과 작업자 보유 자격 입력 확인"
+        }
+      ]
+    },
     "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
   },
   "fatigue": {
     "title": "높은 초기 상태값",
-    "version": "allocation-evidence-0.1",
+    "version": "allocation-evidence-0.2",
     "data_origin": "SIMULATED",
     "model_type": "UNVALIDATED_RULES",
     "seed": 42,
@@ -2158,6 +2235,90 @@
           "load": 155.775
         }
       }
+    },
+    "unassigned": {
+      "groups": {
+        "후보 작업자 없음": 0,
+        "필요 자격 충족 후보 없음": 0,
+        "자격 충족 후보의 누적 상한 초과": 5
+      },
+      "rows": [
+        {
+          "task_id": "T03",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 1.5,
+          "category": "자격 충족 후보의 누적 상한 초과",
+          "candidate_count": 5,
+          "qualified_count": 2,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 2,
+            "최대부하 상한 초과": 0
+          },
+          "check": "자격 충족 후보의 누적 상태와 작업량 입력 확인"
+        },
+        {
+          "task_id": "T12",
+          "qualification": "크레인",
+          "priority": 3,
+          "duration_hours": 0.5,
+          "category": "자격 충족 후보의 누적 상한 초과",
+          "candidate_count": 5,
+          "qualified_count": 2,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 2,
+            "최대부하 상한 초과": 0
+          },
+          "check": "자격 충족 후보의 누적 상태와 작업량 입력 확인"
+        },
+        {
+          "task_id": "T11",
+          "qualification": "지게차",
+          "priority": 2,
+          "duration_hours": 1.5,
+          "category": "자격 충족 후보의 누적 상한 초과",
+          "candidate_count": 5,
+          "qualified_count": 2,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 2,
+            "최대부하 상한 초과": 0
+          },
+          "check": "자격 충족 후보의 누적 상태와 작업량 입력 확인"
+        },
+        {
+          "task_id": "T07",
+          "qualification": "일반",
+          "priority": 1,
+          "duration_hours": 1,
+          "category": "자격 충족 후보의 누적 상한 초과",
+          "candidate_count": 5,
+          "qualified_count": 5,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 5,
+            "최대부하 상한 초과": 0
+          },
+          "check": "자격 충족 후보의 누적 상태와 작업량 입력 확인"
+        },
+        {
+          "task_id": "T01",
+          "qualification": "일반",
+          "priority": 1,
+          "duration_hours": 1.5,
+          "category": "자격 충족 후보의 누적 상한 초과",
+          "candidate_count": 5,
+          "qualified_count": 5,
+          "qualified_limit_counts": {
+            "근무시간 상한 초과": 0,
+            "피로 상한 초과": 5,
+            "최대부하 상한 초과": 0
+          },
+          "check": "자격 충족 후보의 누적 상태와 작업량 입력 확인"
+        }
+      ]
     },
     "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
   }

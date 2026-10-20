@@ -4,6 +4,7 @@ from dataclasses import asdict
 from pathlib import Path
 from portsafe.synthetic import generate
 from portsafe.engine import allocate, allocate_reference, audit, metrics, score
+from portsafe.explanations import unassigned_summary
 
 
 def build():
@@ -15,12 +16,13 @@ def build():
         after=audit(workers,tasks,{r['task']:r['worker'] for r in plan['assignments']})
         reference=allocate_reference(workers,tasks)
         reference_audit=audit(workers,tasks,{r['task']:r['worker'] for r in reference['assignments']})
-        records[key]=dict(title=title,version='allocation-evidence-0.1',data_origin='SIMULATED',
+        records[key]=dict(title=title,version='allocation-evidence-0.2',data_origin='SIMULATED',
             model_type='UNVALIDATED_RULES',seed=42,workers=[asdict(w) for w in workers],
             tasks=[dict(asdict(t),score=score(t)) for t in tasks],baseline=baseline,
             plan=plan,before=metrics(before,tasks),after=metrics(after,tasks),
             before_states=before['states'],after_states=after['states'],
             reference=metrics(reference_audit,tasks),reference_plan=reference,
+            unassigned=unassigned_summary(plan,tasks),
             comparison_note='동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음.')
     template=Path('scripts/allocation_viewer.html').read_text(encoding='utf-8')
     data=json.dumps(records,ensure_ascii=False,allow_nan=False)
