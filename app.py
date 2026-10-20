@@ -5,7 +5,7 @@ import streamlit as st
 from portsafe.engine import allocate, allocate_reference, audit, metrics, score
 from portsafe.synthetic import generate
 from portsafe.proximity import CASES, evaluate
-from portsafe.review import snapshot_id, record_review
+from portsafe.review import snapshot_id, record_review, export_reviews, restore_reviews, MAX_REVIEW_BYTES
 
 st.set_page_config(page_title='PortSafe AX | 합성 데이터 시연', page_icon='⚓', layout='wide')
 st.title('⚓ PortSafe AX')
@@ -95,6 +95,20 @@ with tabs[5]:
     identity = snapshot_id(report)
     all_reviews = st.session_state.setdefault('review_histories', {})
     history = all_reviews.get(identity, [])
+    with st.expander('저장한 검토 기록 불러오기'):
+        st.caption('현재와 같은 시나리오·시드·계획의 검토 JSON만 복원합니다. 기존 기록과 충돌하면 덮어쓰지 않습니다. 파일은 작성자 인증 자료가 아니며 실제 승인을 의미하지 않습니다.')
+        uploaded = st.file_uploader('검토 이력 JSON 선택 (최대 2MB)', type=['json'], key='review_upload_' + identity)
+        if st.button('검토 기록 복원', key='review_restore_' + identity, disabled=uploaded is None):
+            try:
+                if uploaded.size > MAX_REVIEW_BYTES:
+                    raise ValueError('2MB 이하의 JSON 파일을 선택하세요.')
+                restored = restore_reviews(report, history, uploaded.getvalue())
+                added = len(restored) - len(history)
+                history = restored
+                all_reviews[identity] = history
+                st.success(f'검토 기록 {added}건을 복원했습니다. 기존 중복 기록과 배정 결과는 변경하지 않았습니다.')
+            except ValueError as exc:
+                st.error(str(exc))
     with st.form('review_form_' + identity):
         selected_task = st.selectbox('검토할 작업', [r['task'] for r in plan['assignments']], key='review_task_' + identity)
         review_status = st.selectbox('검토 상태', ['검토 확인', '보류', '입력 정정 요청'], key='review_status_' + identity)
@@ -110,8 +124,7 @@ with tabs[5]:
     if history:
         st.dataframe(pd.DataFrame(history)[['sequence', 'timestamp_utc', 'task_id', 'assigned_worker', 'status', 'reason']], hide_index=True)
         st.download_button('검토 이력과 계획 JSON 다운로드',
-            json.dumps(dict(snapshot_id=identity, plan_snapshot=report, review_history=history,
-                            disclaimer='세션 내 합성 검토 메모. 인증된 승인 또는 현장 실행 기록이 아님.'),ensure_ascii=False,indent=2),
+            export_reviews(report, history),
             'portsafe_review_SIMULATED.json', 'application/json')
     else:
         st.write('현재 입력·계획에 대한 검토 기록이 없습니다.')
