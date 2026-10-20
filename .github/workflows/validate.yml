@@ -48,6 +48,7 @@ jobs:
           python -m scripts.verify_demo
           python -m scripts.build_allocation_demo
           python -m scripts.build_proximity_demo
+          python -m scripts.check_demo
       - name: Check committed evidence matches engine
         run: git diff --exit-code -- data/verification_metrics.json demo/PortSafeAX_allocation_demo.html demo/PortSafeAX_allocation_demo.json demo/PortSafeAX_proximity_demo.html demo/PortSafeAX_proximity_demo.json
       - name: Build and verify offline package

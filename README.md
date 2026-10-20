@@ -27,6 +27,8 @@
 
 무결성 확인: `python -m scripts.package_demo --verify deliverables/PortSafeAX_offline_demo.zip`. 해시는 손상·차이 확인용으로 제작자 인증이나 현장 검증을 뜻하지 않습니다. 필수 제출서류 묶음도 아닙니다.
 
+정적 파일 점검은 `python -m scripts.check_demo`로 실행합니다. 시작 화면 링크가 실제 파일을 가리키는지, 외부 CSS·스크립트가 없는지, 세 작업배정 사례와 여덟 접근 경고 사례의 합성·미검증 표시가 유지되는지 확인합니다.
+
 ## GitHub 자동 검증
 
 main의 Windows·Ubuntu 검사가 **모두 성공하면** `Save verified demo download` 작업이 시연 ZIP과 `build_receipt.json`을 Actions 산출물로30일간 보관합니다. 실행 상세 페이지의 `portsafe-demo-커밋번호`를 내려받아 바깥 압축을 푼 뒤 내부 `PortSafeAX_offline_demo.zip`도 풀고 `index.html`을 여세요. 버전 확인서에는 코드 커밋·검사 실행 URL·시연 ZIP의 SHA-256이 있습니다. 전자서명 또는 현장 검증 인증서는 아닙니다. PR 검사에서는 다운로드 산출물을 만들지 않습니다. 기획서·공모전 원본은 포함하지 않습니다.
