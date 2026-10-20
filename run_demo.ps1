@@ -3,6 +3,7 @@ Set-Location -LiteralPath $PSScriptRoot
 New-Item -ItemType Directory -Force '.tmp' | Out-Null
 $env:TEMP = Join-Path $PSScriptRoot '.tmp'
 $env:TMP = $env:TEMP
+$env:PYTHONPATH = $PSScriptRoot
 if (-not (Test-Path '.venv/Scripts/python.exe')) {
     python -m venv .venv
     if ($LASTEXITCODE -ne 0) { throw 'Python 3.11 이상을 설치해 주세요.' }
@@ -19,5 +20,5 @@ if ($LASTEXITCODE -ne 0) {
     & $demoPython -m pip install -r $demoRequirements
     if ($LASTEXITCODE -ne 0) { throw '패키지 설치 실패: 인터넷 연결을 확인하세요.' }
 }
-& $demoPython -m streamlit run app.py --server.address 127.0.0.1 --server.headless true --browser.gatherUsageStats false
+& $demoPython -m streamlit run app.py --server.address 127.0.0.1 --server.headless true --server.fileWatcherType none --browser.gatherUsageStats false
 exit $LASTEXITCODE

@@ -13,3 +13,4 @@ docs/PORTSAFE_IDEA_DRAFT.md
 .streamlit/secrets.toml
 *.pem
 *.key
+submission_private/

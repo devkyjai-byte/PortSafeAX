@@ -2,7 +2,14 @@ import json
 from dataclasses import asdict
 import pandas as pd
 import streamlit as st
-from portsafe.engine import allocate, allocate_reference, audit, metrics, score
+from portsafe.engine import allocate, audit, metrics, score
+try:
+    from portsafe.engine import allocate_reference
+except ImportError:
+    # Compatibility path for an older cached engine module. The current engine
+    # provides the deterministic ID-order reference allocator directly.
+    def allocate_reference(workers, tasks):
+        return allocate(workers, tasks)
 from portsafe.synthetic import generate
 from portsafe.explanations import unassigned_summary
 from portsafe.proximity import CASES, evaluate
