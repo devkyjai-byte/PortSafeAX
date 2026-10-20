@@ -1,0 +1,44 @@
+name: Validate MVP
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements-lock.txt
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Test rules and dashboard
+        run: python -m pytest -q
+      - name: Rebuild synthetic demo evidence
+        run: |
+          python -m scripts.verify_demo
+          python -m scripts.build_allocation_demo
+          python -m scripts.build_proximity_demo
+      - name: Check committed evidence matches engine
+        run: git diff --exit-code -- data/verification_metrics.json demo/PortSafeAX_allocation_demo.html demo/PortSafeAX_allocation_demo.json demo/PortSafeAX_proximity_demo.html demo/PortSafeAX_proximity_demo.json

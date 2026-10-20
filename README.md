@@ -19,7 +19,13 @@
 
 **모든 데이터는 합성 데이터입니다. 검증된 ML 모델은 없습니다.** 작업부담·피로는 설명 가능한 시연용 규칙 계산값입니다. 예측 정확도, 사고 감소율, 임상적 효과를 주장하지 않습니다. SmokeFree AI의 코드·데이터·환경·산출물을 사용하지 않으며 이 폴더의 가상환경만 사용합니다.
 
-## 실행
+## 자동 검증
+
+GitHub Actions의 `Validate MVP`는 main 업로드·PR·수동 실행 시 Windows와 Ubuntu의 Python 3.12에서 고정 의존성 설치, 의존성 충돌 검사, 전체 테스트, 합성 시연 재생성 및 저장된 결과와의 일치 검사를 수행합니다. 코드 변경으로 시연 결과가 달라지면 시연 파일도 재생성해 함께 커밋해야 합니다. 실행 결과는 [Actions](https://github.com/devkyjai-byte/PortSafeAX/actions/workflows/validate.yml)에서 확인하세요. 이는 소프트웨어 검사이며 현장 안전성이나 센서 성능 검증은 아닙니다.
+
+설정 방식 참고: [GitHub 공식 Python 자동 검사 안내](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).
+
+## 로컬 실행
 
 Windows와 Python 3.11 이상이 필요합니다(Python 3.12에서 검증). **`run_demo.bat`을 더블클릭**하면 독립 `.venv` 생성, 의존성 설치, 로컬 대시보드 실행을 수행합니다. 첫 실행에는 인터넷이 필요하며, 설치 후에는 오프라인 실행할 수 있습니다. 브라우저가 자동으로 열리지 않으면 http://127.0.0.1:8501 에 접속하세요. 종료는 실행 창에서 Ctrl+C입니다.
 
