@@ -2,6 +2,7 @@ from copy import deepcopy
 import pytest
 from portsafe.review import record_review, snapshot_id
 from portsafe.review import export_reviews, restore_reviews, MAX_REVIEW_BYTES
+from portsafe.review import review_summary
 import json
 
 
@@ -77,3 +78,20 @@ def test_restore_rejects_other_plan_and_conflicting_history():
 def test_restore_rejects_invalid_file(raw):
     with pytest.raises(ValueError):
         restore_reviews(report(), [], raw)
+
+
+def test_summary_counts_tasks_not_events_and_keeps_unassigned_visible():
+    plan = report(); saved = deepcopy(plan)
+    empty = review_summary(plan, [])
+    assert empty['counts']['미검토'] == 2 and empty['needs_review'] == 2
+    history = record_review(plan, [], 'T1', '검토 확인', '조건 확인')
+    history = record_review(plan, history, 'T1', '보류', '추가 확인')
+    before = deepcopy(history)
+    summary = review_summary(plan, history)
+    assert summary['counts'] == {'미검토':1, '보류':1, '입력 정정 요청':0, '검토 확인':0}
+    assert summary['rows'][0]['reason'] == '추가 확인'
+    assert summary['rows'][1]['assigned_worker'] is None
+    assert history == before and plan == saved
+    other = deepcopy(plan); other['seed'] = 43
+    with pytest.raises(ValueError):
+        review_summary(other, history)

@@ -5,7 +5,7 @@ import streamlit as st
 from portsafe.engine import allocate, allocate_reference, audit, metrics, score
 from portsafe.synthetic import generate
 from portsafe.proximity import CASES, evaluate
-from portsafe.review import snapshot_id, record_review, export_reviews, restore_reviews, MAX_REVIEW_BYTES
+from portsafe.review import snapshot_id, record_review, export_reviews, restore_reviews, review_summary, MAX_REVIEW_BYTES
 
 st.set_page_config(page_title='PortSafe AX | 합성 데이터 시연', page_icon='⚓', layout='wide')
 st.title('⚓ PortSafe AX')
@@ -121,7 +121,26 @@ with tabs[5]:
             st.success('현재 입력·계획에 연결된 검토 기록을 추가했습니다. 실제 배정은 변경하지 않았습니다.')
         except ValueError as exc:
             st.error(str(exc))
+    st.subheader('작업별 최신 검토 상태')
+    overview = review_summary(report, history)
+    review_cols = st.columns(4)
+    for col, (status, count) in zip(review_cols, overview['counts'].items()):
+        col.metric(status + ' 작업', count)
+    st.caption(f"추가 확인 대상 {overview['needs_review']}건. 작업별 마지막으로 추가한 기록을 표시합니다. ‘검토 확인’은 작업 승인·안전 확인·실제 작업 완료가 아닙니다.")
+    review_filter = st.selectbox('표시할 검토 상태', ['확인 필요', '전체', *overview['counts']],
+                                 key='review_filter_' + identity)
+    visible = [row for row in overview['rows'] if review_filter == '전체'
+               or (review_filter == '확인 필요' and row['status'] != '검토 확인')
+               or row['status'] == review_filter]
+    if visible:
+        st.dataframe(pd.DataFrame([{'작업': row['task_id'], '배정 작업자': row['assigned_worker'] or '미배정',
+                                   '최신 검토 상태': row['status'], '최신 사유': row['reason'],
+                                   '기록 순번': row['sequence'], '기록 시각(UTC)': row['timestamp_utc']}
+                                  for row in visible]), hide_index=True)
+    else:
+        st.info('선택한 상태의 작업이 없습니다. 배정 결과나 실제 현장 안전 여부를 뜻하지 않습니다.')
     if history:
+        st.subheader('전체 검토 이력')
         st.dataframe(pd.DataFrame(history)[['sequence', 'timestamp_utc', 'task_id', 'assigned_worker', 'status', 'reason']], hide_index=True)
         st.download_button('검토 이력과 계획 JSON 다운로드',
             export_reviews(report, history),

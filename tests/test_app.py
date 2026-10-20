@@ -12,8 +12,7 @@ def test_dashboard_all_scenarios():
     for scenario in ('shortage', 'fatigue', 'standard'):
         app.selectbox(key='allocation_scenario').select(scenario).run(timeout=30)
         assert not app.exception
-        assert len(app.metric) == 3
-        assert app.metric[2].value == '0'
+        assert next(m.value for m in app.metric if m.label == '제약 위반 배정 수') == '0'
     app.number_input[0].set_value(99).run(timeout=30)
     assert not app.exception
 
@@ -26,9 +25,19 @@ def test_review_form_and_snapshot_isolation():
     assert not app.exception
     assert len(app.session_state['review_histories'][identity]) == 1
     assert app.session_state['review_histories'][identity][0]['execution_authorized'] is False
+    assert next(m.value for m in app.metric if m.label == '검토 확인 작업') == '1'
+    assert next(m.value for m in app.metric if m.label == '미검토 작업') == '11'
+    app.selectbox(key='review_status_' + identity).select('보류')
+    app.text_area(key='review_reason_' + identity).set_value('추가 검토 필요')
+    next(x for x in app.button if x.label == '검토 기록 추가').click().run(timeout=30)
+    assert next(m.value for m in app.metric if m.label == '검토 확인 작업') == '0'
+    assert next(m.value for m in app.metric if m.label == '보류 작업') == '1'
+    app.selectbox(key='review_filter_' + identity).select('보류').run(timeout=30)
+    table = next(x.value for x in app.dataframe if '최신 검토 상태' in x.value.columns)
+    assert len(table) == 1 and table.iloc[0]['최신 사유'] == '추가 검토 필요'
     app.number_input[0].set_value(99).run(timeout=30)
     other = next(x.key.removeprefix('review_task_') for x in app.selectbox if x.key.startswith('review_task_'))
     assert other != identity
     assert other not in app.session_state['review_histories']
     app.number_input[0].set_value(42).run(timeout=30)
-    assert len(app.session_state['review_histories'][identity]) == 1
+    assert len(app.session_state['review_histories'][identity]) == 2

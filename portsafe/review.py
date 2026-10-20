@@ -40,6 +40,25 @@ def export_reviews(report, history):
                       ensure_ascii=False, indent=2, allow_nan=False)
 
 
+def review_summary(report, history):
+    """Summarize validated session events in append order, never as approvals."""
+    identity = snapshot_id(report)
+    if any(event['snapshot_id'] != identity for event in history):
+        raise ValueError('다른 계획의 검토 기록을 요약할 수 없습니다.')
+    latest = {event['task_id']: event for event in history}
+    counts = dict.fromkeys(['미검토', '보류', '입력 정정 요청', '검토 확인'], 0)
+    rows = []
+    for assignment in report['plan']['assignments']:
+        event = latest.get(assignment['task'])
+        status = event['status'] if event else '미검토'
+        counts[status] += 1
+        rows.append(dict(task_id=assignment['task'], assigned_worker=assignment['worker'],
+                         status=status, reason=event['reason'] if event else '',
+                         sequence=event['sequence'] if event else None,
+                         timestamp_utc=event['timestamp_utc'] if event else None))
+    return dict(counts=counts, rows=rows, needs_review=len(rows)-counts['검토 확인'])
+
+
 def _unique_object(pairs):
     result = {}
     for key, value in pairs:
