@@ -2,14 +2,26 @@ import json
 from dataclasses import asdict
 import pandas as pd
 import streamlit as st
-from portsafe.engine import allocate, audit, metrics, score
+from portsafe.engine import allocate, audit, metrics, score, apply, increment, initial, validate, violations
 try:
     from portsafe.engine import allocate_reference
 except ImportError:
     # Compatibility path for an older cached engine module. The current engine
     # provides the deterministic ID-order reference allocator directly.
     def allocate_reference(workers, tasks):
-        return allocate(workers, tasks)
+        validate(workers, tasks)
+        state = initial(workers)
+        rows = []
+        for task in sorted(tasks, key=lambda t: (-t.priority, -score(t), t.id)):
+            rejected = {w.id: violations(w, state[w.id], task) for w in workers}
+            feasible = sorted((w for w in workers if not rejected[w.id]), key=lambda w: w.id)
+            chosen = feasible[0] if feasible else None
+            if chosen:
+                apply(state[chosen.id], task)
+            rows.append(dict(task=task.id, worker=chosen.id if chosen else None,
+                             reason='ID순 첫 제약 충족 후보' if chosen else '가능한 작업자 없음',
+                             rejected=rejected))
+        return dict(assignments=rows, states=state)
 from portsafe.synthetic import generate
 from portsafe.explanations import unassigned_summary
 from portsafe.proximity import CASES, evaluate
