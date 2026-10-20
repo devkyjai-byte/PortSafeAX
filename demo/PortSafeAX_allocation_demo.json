@@ -1,0 +1,2164 @@
+{
+  "standard": {
+    "title": "기본 작업배정",
+    "version": "allocation-evidence-0.1",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "seed": 42,
+    "workers": [
+      {
+        "id": "W01",
+        "qualifications": [
+          "일반",
+          "지게차"
+        ],
+        "hours": 2,
+        "fatigue": 20,
+        "load": 50,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W02",
+        "qualifications": [
+          "일반"
+        ],
+        "hours": 2,
+        "fatigue": 26,
+        "load": 60,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W03",
+        "qualifications": [
+          "일반",
+          "크레인"
+        ],
+        "hours": 2,
+        "fatigue": 32,
+        "load": 70,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W04",
+        "qualifications": [
+          "일반",
+          "지게차"
+        ],
+        "hours": 2,
+        "fatigue": 38,
+        "load": 80,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W05",
+        "qualifications": [
+          "일반",
+          "크레인"
+        ],
+        "hours": 2,
+        "fatigue": 44,
+        "load": 90,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      }
+    ],
+    "tasks": [
+      {
+        "id": "T01",
+        "qualification": "일반",
+        "duration": 1.5,
+        "weight": 34,
+        "repetition": 23,
+        "posture": 55,
+        "heat": 35,
+        "priority": 1,
+        "score": 36.65
+      },
+      {
+        "id": "T02",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 37,
+        "repetition": 33,
+        "posture": 89,
+        "heat": 25,
+        "priority": 2,
+        "score": 47.2
+      },
+      {
+        "id": "T03",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 74,
+        "repetition": 24,
+        "posture": 23,
+        "heat": 25,
+        "priority": 3,
+        "score": 41.4
+      },
+      {
+        "id": "T04",
+        "qualification": "일반",
+        "duration": 0.5,
+        "weight": 49,
+        "repetition": 84,
+        "posture": 23,
+        "heat": 55,
+        "priority": 1,
+        "score": 52.15
+      },
+      {
+        "id": "T05",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 89,
+        "repetition": 73,
+        "posture": 48,
+        "heat": 48,
+        "priority": 2,
+        "score": 68.6
+      },
+      {
+        "id": "T06",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 55,
+        "repetition": 20,
+        "posture": 40,
+        "heat": 64,
+        "priority": 3,
+        "score": 43.85
+      },
+      {
+        "id": "T07",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 63,
+        "repetition": 55,
+        "posture": 39,
+        "heat": 33,
+        "priority": 1,
+        "score": 50.5
+      },
+      {
+        "id": "T08",
+        "qualification": "지게차",
+        "duration": 1,
+        "weight": 33,
+        "repetition": 31,
+        "posture": 68,
+        "heat": 26,
+        "priority": 2,
+        "score": 40.2
+      },
+      {
+        "id": "T09",
+        "qualification": "크레인",
+        "duration": 1,
+        "weight": 64,
+        "repetition": 53,
+        "posture": 25,
+        "heat": 66,
+        "priority": 3,
+        "score": 51.8
+      },
+      {
+        "id": "T10",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 88,
+        "repetition": 35,
+        "posture": 68,
+        "heat": 25,
+        "priority": 1,
+        "score": 60.3
+      },
+      {
+        "id": "T11",
+        "qualification": "지게차",
+        "duration": 1.5,
+        "weight": 57,
+        "repetition": 66,
+        "posture": 44,
+        "heat": 65,
+        "priority": 2,
+        "score": 57.2
+      },
+      {
+        "id": "T12",
+        "qualification": "크레인",
+        "duration": 0.5,
+        "weight": 25,
+        "repetition": 49,
+        "posture": 57,
+        "heat": 25,
+        "priority": 3,
+        "score": 39.0
+      }
+    ],
+    "baseline": {
+      "T01": "W01",
+      "T02": "W02",
+      "T03": "W01",
+      "T04": "W02",
+      "T05": "W01",
+      "T06": "W02",
+      "T07": "W01",
+      "T08": "W02",
+      "T09": "W01",
+      "T10": "W02",
+      "T11": "W01",
+      "T12": "W02"
+    },
+    "plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": "W03",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T06",
+          "worker": "W03",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T03",
+          "worker": "W05",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T12",
+          "worker": "W05",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W04",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W04",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [],
+            "W03": [],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [],
+            "W03": [],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T07",
+          "worker": "W04",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [],
+            "W03": [],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T01",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [],
+            "W03": [],
+            "W04": [],
+            "W05": []
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 4.0,
+          "fatigue": 34.412,
+          "load": 170.10000000000002
+        },
+        "W02": {
+          "hours": 5.0,
+          "fatigue": 42.961999999999996,
+          "load": 201.35
+        },
+        "W03": {
+          "hours": 4.5,
+          "fatigue": 46.109,
+          "load": 187.575
+        },
+        "W04": {
+          "hours": 4.5,
+          "fatigue": 51.716,
+          "load": 194.3
+        },
+        "W05": {
+          "hours": 4.0,
+          "fatigue": 53.792,
+          "load": 171.6
+        }
+      }
+    },
+    "before": {
+      "배정 작업 수": 12,
+      "미배정 작업 수": 0,
+      "배정 작업시간": 12.0,
+      "제약 위반 배정 수": 7,
+      "최대 예상 피로": 60.74,
+      "최대 누적 부담": 389.48
+    },
+    "after": {
+      "배정 작업 수": 12,
+      "미배정 작업 수": 0,
+      "배정 작업시간": 12.0,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 53.79,
+      "최대 누적 부담": 201.35
+    },
+    "before_states": {
+      "W01": {
+        "hours": 9.0,
+        "fatigue": 60.737,
+        "load": 389.475
+      },
+      "W02": {
+        "hours": 7.0,
+        "fatigue": 54.25399999999999,
+        "load": 295.45
+      },
+      "W03": {
+        "hours": 2,
+        "fatigue": 32,
+        "load": 70
+      },
+      "W04": {
+        "hours": 2,
+        "fatigue": 38,
+        "load": 80
+      },
+      "W05": {
+        "hours": 2,
+        "fatigue": 44,
+        "load": 90
+      }
+    },
+    "after_states": {
+      "W01": {
+        "hours": 4.0,
+        "fatigue": 34.412,
+        "load": 170.10000000000002
+      },
+      "W02": {
+        "hours": 5.0,
+        "fatigue": 42.961999999999996,
+        "load": 201.34999999999997
+      },
+      "W03": {
+        "hours": 4.5,
+        "fatigue": 46.109,
+        "load": 187.575
+      },
+      "W04": {
+        "hours": 4.5,
+        "fatigue": 51.716,
+        "load": 194.3
+      },
+      "W05": {
+        "hours": 4.0,
+        "fatigue": 53.792,
+        "load": 171.6
+      }
+    },
+    "reference": {
+      "배정 작업 수": 12,
+      "미배정 작업 수": 0,
+      "배정 작업시간": 12.0,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 55.9,
+      "최대 누적 부담": 294.2
+    },
+    "reference_plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": "W03",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T06",
+          "worker": "W03",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T03",
+          "worker": "W03",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T12",
+          "worker": "W03",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [],
+            "W03": [
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": [],
+            "W03": [],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T07",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": [],
+            "W03": [
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": []
+          }
+        },
+        {
+          "task": "T01",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": [],
+            "W03": [
+              "최대부하 상한 초과"
+            ],
+            "W04": [],
+            "W05": []
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 6.5,
+          "fatigue": 49.303999999999995,
+          "load": 294.20000000000005
+        },
+        "W02": {
+          "hours": 5.0,
+          "fatigue": 41.786,
+          "load": 191.54999999999998
+        },
+        "W03": {
+          "hours": 6.5,
+          "fatigue": 55.900999999999996,
+          "load": 269.17499999999995
+        },
+        "W04": {
+          "hours": 2,
+          "fatigue": 38,
+          "load": 80
+        },
+        "W05": {
+          "hours": 2,
+          "fatigue": 44,
+          "load": 90
+        }
+      }
+    },
+    "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
+  },
+  "shortage": {
+    "title": "자격 인력 부족",
+    "version": "allocation-evidence-0.1",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "seed": 42,
+    "workers": [
+      {
+        "id": "W01",
+        "qualifications": [
+          "일반",
+          "지게차"
+        ],
+        "hours": 2,
+        "fatigue": 20,
+        "load": 50,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W02",
+        "qualifications": [
+          "일반"
+        ],
+        "hours": 2,
+        "fatigue": 26,
+        "load": 60,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      }
+    ],
+    "tasks": [
+      {
+        "id": "T01",
+        "qualification": "일반",
+        "duration": 1.5,
+        "weight": 34,
+        "repetition": 23,
+        "posture": 55,
+        "heat": 35,
+        "priority": 1,
+        "score": 36.65
+      },
+      {
+        "id": "T02",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 37,
+        "repetition": 33,
+        "posture": 89,
+        "heat": 25,
+        "priority": 2,
+        "score": 47.2
+      },
+      {
+        "id": "T03",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 74,
+        "repetition": 24,
+        "posture": 23,
+        "heat": 25,
+        "priority": 3,
+        "score": 41.4
+      },
+      {
+        "id": "T04",
+        "qualification": "일반",
+        "duration": 0.5,
+        "weight": 49,
+        "repetition": 84,
+        "posture": 23,
+        "heat": 55,
+        "priority": 1,
+        "score": 52.15
+      },
+      {
+        "id": "T05",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 89,
+        "repetition": 73,
+        "posture": 48,
+        "heat": 48,
+        "priority": 2,
+        "score": 68.6
+      },
+      {
+        "id": "T06",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 55,
+        "repetition": 20,
+        "posture": 40,
+        "heat": 64,
+        "priority": 3,
+        "score": 43.85
+      },
+      {
+        "id": "T07",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 63,
+        "repetition": 55,
+        "posture": 39,
+        "heat": 33,
+        "priority": 1,
+        "score": 50.5
+      },
+      {
+        "id": "T08",
+        "qualification": "지게차",
+        "duration": 1,
+        "weight": 33,
+        "repetition": 31,
+        "posture": 68,
+        "heat": 26,
+        "priority": 2,
+        "score": 40.2
+      },
+      {
+        "id": "T09",
+        "qualification": "크레인",
+        "duration": 1,
+        "weight": 64,
+        "repetition": 53,
+        "posture": 25,
+        "heat": 66,
+        "priority": 3,
+        "score": 51.8
+      },
+      {
+        "id": "T10",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 88,
+        "repetition": 35,
+        "posture": 68,
+        "heat": 25,
+        "priority": 1,
+        "score": 60.3
+      },
+      {
+        "id": "T11",
+        "qualification": "지게차",
+        "duration": 1.5,
+        "weight": 57,
+        "repetition": 66,
+        "posture": 44,
+        "heat": 65,
+        "priority": 2,
+        "score": 57.2
+      },
+      {
+        "id": "T12",
+        "qualification": "크레인",
+        "duration": 0.5,
+        "weight": 25,
+        "repetition": 49,
+        "posture": 57,
+        "heat": 25,
+        "priority": 3,
+        "score": 39.0
+      }
+    ],
+    "baseline": {
+      "T01": "W01",
+      "T02": "W02",
+      "T03": "W01",
+      "T04": "W02",
+      "T05": "W01",
+      "T06": "W02",
+      "T07": "W01",
+      "T08": "W02",
+      "T09": "W01",
+      "T10": "W02",
+      "T11": "W01",
+      "T12": "W02"
+    },
+    "plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T06",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T03",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T12",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": []
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": []
+          }
+        },
+        {
+          "task": "T07",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": []
+          }
+        },
+        {
+          "task": "T01",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": []
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 5.5,
+          "fatigue": 42.068,
+          "load": 233.90000000000003
+        },
+        "W02": {
+          "hours": 6.0,
+          "fatigue": 49.022,
+          "load": 251.85
+        }
+      }
+    },
+    "before": {
+      "배정 작업 수": 12,
+      "미배정 작업 수": 0,
+      "배정 작업시간": 12.0,
+      "제약 위반 배정 수": 7,
+      "최대 예상 피로": 60.74,
+      "최대 누적 부담": 389.48
+    },
+    "after": {
+      "배정 작업 수": 8,
+      "미배정 작업 수": 4,
+      "배정 작업시간": 7.5,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 49.02,
+      "최대 누적 부담": 251.85
+    },
+    "before_states": {
+      "W01": {
+        "hours": 9.0,
+        "fatigue": 60.737,
+        "load": 389.475
+      },
+      "W02": {
+        "hours": 7.0,
+        "fatigue": 54.25399999999999,
+        "load": 295.45
+      }
+    },
+    "after_states": {
+      "W01": {
+        "hours": 5.5,
+        "fatigue": 42.068,
+        "load": 233.9
+      },
+      "W02": {
+        "hours": 6.0,
+        "fatigue": 49.022,
+        "load": 251.84999999999997
+      }
+    },
+    "reference": {
+      "배정 작업 수": 8,
+      "미배정 작업 수": 4,
+      "배정 작업시간": 7.5,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 49.3,
+      "최대 누적 부담": 294.2
+    },
+    "reference_plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T06",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T03",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T12",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": []
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": []
+          }
+        },
+        {
+          "task": "T07",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": []
+          }
+        },
+        {
+          "task": "T01",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "최대부하 상한 초과"
+            ],
+            "W02": []
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 6.5,
+          "fatigue": 49.303999999999995,
+          "load": 294.20000000000005
+        },
+        "W02": {
+          "hours": 5.0,
+          "fatigue": 41.786,
+          "load": 191.54999999999998
+        }
+      }
+    },
+    "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
+  },
+  "fatigue": {
+    "title": "높은 초기 상태값",
+    "version": "allocation-evidence-0.1",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "seed": 42,
+    "workers": [
+      {
+        "id": "W01",
+        "qualifications": [
+          "일반",
+          "지게차"
+        ],
+        "hours": 2,
+        "fatigue": 72,
+        "load": 50,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W02",
+        "qualifications": [
+          "일반"
+        ],
+        "hours": 2,
+        "fatigue": 72,
+        "load": 60,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W03",
+        "qualifications": [
+          "일반",
+          "크레인"
+        ],
+        "hours": 2,
+        "fatigue": 72,
+        "load": 70,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W04",
+        "qualifications": [
+          "일반",
+          "지게차"
+        ],
+        "hours": 2,
+        "fatigue": 72,
+        "load": 80,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      },
+      {
+        "id": "W05",
+        "qualifications": [
+          "일반",
+          "크레인"
+        ],
+        "hours": 2,
+        "fatigue": 72,
+        "load": 90,
+        "max_hours": 8,
+        "max_fatigue": 80,
+        "max_load": 300
+      }
+    ],
+    "tasks": [
+      {
+        "id": "T01",
+        "qualification": "일반",
+        "duration": 1.5,
+        "weight": 34,
+        "repetition": 23,
+        "posture": 55,
+        "heat": 35,
+        "priority": 1,
+        "score": 36.65
+      },
+      {
+        "id": "T02",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 37,
+        "repetition": 33,
+        "posture": 89,
+        "heat": 25,
+        "priority": 2,
+        "score": 47.2
+      },
+      {
+        "id": "T03",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 74,
+        "repetition": 24,
+        "posture": 23,
+        "heat": 25,
+        "priority": 3,
+        "score": 41.4
+      },
+      {
+        "id": "T04",
+        "qualification": "일반",
+        "duration": 0.5,
+        "weight": 49,
+        "repetition": 84,
+        "posture": 23,
+        "heat": 55,
+        "priority": 1,
+        "score": 52.15
+      },
+      {
+        "id": "T05",
+        "qualification": "지게차",
+        "duration": 0.5,
+        "weight": 89,
+        "repetition": 73,
+        "posture": 48,
+        "heat": 48,
+        "priority": 2,
+        "score": 68.6
+      },
+      {
+        "id": "T06",
+        "qualification": "크레인",
+        "duration": 1.5,
+        "weight": 55,
+        "repetition": 20,
+        "posture": 40,
+        "heat": 64,
+        "priority": 3,
+        "score": 43.85
+      },
+      {
+        "id": "T07",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 63,
+        "repetition": 55,
+        "posture": 39,
+        "heat": 33,
+        "priority": 1,
+        "score": 50.5
+      },
+      {
+        "id": "T08",
+        "qualification": "지게차",
+        "duration": 1,
+        "weight": 33,
+        "repetition": 31,
+        "posture": 68,
+        "heat": 26,
+        "priority": 2,
+        "score": 40.2
+      },
+      {
+        "id": "T09",
+        "qualification": "크레인",
+        "duration": 1,
+        "weight": 64,
+        "repetition": 53,
+        "posture": 25,
+        "heat": 66,
+        "priority": 3,
+        "score": 51.8
+      },
+      {
+        "id": "T10",
+        "qualification": "일반",
+        "duration": 1,
+        "weight": 88,
+        "repetition": 35,
+        "posture": 68,
+        "heat": 25,
+        "priority": 1,
+        "score": 60.3
+      },
+      {
+        "id": "T11",
+        "qualification": "지게차",
+        "duration": 1.5,
+        "weight": 57,
+        "repetition": 66,
+        "posture": 44,
+        "heat": 65,
+        "priority": 2,
+        "score": 57.2
+      },
+      {
+        "id": "T12",
+        "qualification": "크레인",
+        "duration": 0.5,
+        "weight": 25,
+        "repetition": 49,
+        "posture": 57,
+        "heat": 25,
+        "priority": 3,
+        "score": 39.0
+      }
+    ],
+    "baseline": {
+      "T01": "W01",
+      "T02": "W02",
+      "T03": "W01",
+      "T04": "W02",
+      "T05": "W01",
+      "T06": "W02",
+      "T07": "W01",
+      "T08": "W02",
+      "T09": "W01",
+      "T10": "W02",
+      "T11": "W01",
+      "T12": "W02"
+    },
+    "plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": "W03",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T06",
+          "worker": "W05",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T03",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T12",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W04",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W04",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W02",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W01",
+          "reason": "모든 제약 충족",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T07",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T01",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 3.0,
+          "fatigue": 79.245,
+          "load": 110.375
+        },
+        "W02": {
+          "hours": 3,
+          "fatigue": 79.236,
+          "load": 120.3
+        },
+        "W03": {
+          "hours": 3,
+          "fatigue": 78.216,
+          "load": 121.8
+        },
+        "W04": {
+          "hours": 3.5,
+          "fatigue": 79.65599999999999,
+          "load": 143.8
+        },
+        "W05": {
+          "hours": 3.5,
+          "fatigue": 79.893,
+          "load": 155.775
+        }
+      }
+    },
+    "before": {
+      "배정 작업 수": 12,
+      "미배정 작업 수": 0,
+      "배정 작업시간": 12.0,
+      "제약 위반 배정 수": 10,
+      "최대 예상 피로": 112.74,
+      "최대 누적 부담": 389.48
+    },
+    "after": {
+      "배정 작업 수": 7,
+      "미배정 작업 수": 5,
+      "배정 작업시간": 6.0,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 79.89,
+      "최대 누적 부담": 155.78
+    },
+    "before_states": {
+      "W01": {
+        "hours": 9.0,
+        "fatigue": 112.737,
+        "load": 389.475
+      },
+      "W02": {
+        "hours": 7.0,
+        "fatigue": 100.254,
+        "load": 295.45
+      },
+      "W03": {
+        "hours": 2,
+        "fatigue": 72,
+        "load": 70
+      },
+      "W04": {
+        "hours": 2,
+        "fatigue": 72,
+        "load": 80
+      },
+      "W05": {
+        "hours": 2,
+        "fatigue": 72,
+        "load": 90
+      }
+    },
+    "after_states": {
+      "W01": {
+        "hours": 3.0,
+        "fatigue": 79.245,
+        "load": 110.375
+      },
+      "W02": {
+        "hours": 3,
+        "fatigue": 79.236,
+        "load": 120.3
+      },
+      "W03": {
+        "hours": 3,
+        "fatigue": 78.216,
+        "load": 121.8
+      },
+      "W04": {
+        "hours": 3.5,
+        "fatigue": 79.65599999999999,
+        "load": 143.8
+      },
+      "W05": {
+        "hours": 3.5,
+        "fatigue": 79.893,
+        "load": 155.775
+      }
+    },
+    "reference": {
+      "배정 작업 수": 7,
+      "미배정 작업 수": 5,
+      "배정 작업시간": 6.0,
+      "제약 위반 배정 수": 0,
+      "최대 예상 피로": 79.95,
+      "최대 누적 부담": 155.78
+    },
+    "reference_plan": {
+      "assignments": [
+        {
+          "task": "T09",
+          "worker": "W03",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T06",
+          "worker": "W05",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": []
+          }
+        },
+        {
+          "task": "T03",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T12",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "자격 불충족"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "자격 불충족"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T05",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T11",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T02",
+          "worker": "W01",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T08",
+          "worker": "W04",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "자격 불충족"
+            ],
+            "W03": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "자격 불충족",
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T10",
+          "worker": "W02",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T04",
+          "worker": "W04",
+          "reason": "ID순 첫 제약 충족 후보",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T07",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        },
+        {
+          "task": "T01",
+          "worker": null,
+          "reason": "가능한 작업자 없음",
+          "rejected": {
+            "W01": [
+              "피로 상한 초과"
+            ],
+            "W02": [
+              "피로 상한 초과"
+            ],
+            "W03": [
+              "피로 상한 초과"
+            ],
+            "W04": [
+              "피로 상한 초과"
+            ],
+            "W05": [
+              "피로 상한 초과"
+            ]
+          }
+        }
+      ],
+      "states": {
+        "W01": {
+          "hours": 3.0,
+          "fatigue": 78.948,
+          "load": 107.9
+        },
+        "W02": {
+          "hours": 3,
+          "fatigue": 79.236,
+          "load": 120.3
+        },
+        "W03": {
+          "hours": 3,
+          "fatigue": 78.216,
+          "load": 121.8
+        },
+        "W04": {
+          "hours": 3.5,
+          "fatigue": 79.953,
+          "load": 146.275
+        },
+        "W05": {
+          "hours": 3.5,
+          "fatigue": 79.893,
+          "load": 155.775
+        }
+      }
+    },
+    "comparison_note": "동일 입력·작업 순서·제약. 단순안은 ID순 첫 적격자, 재배치안은 최대 상한 사용비율 최소 후보. 현장 방식이나 최적해를 대표하지 않음."
+  }
+}

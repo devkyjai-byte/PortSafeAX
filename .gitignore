@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.log
+.tmp/
+deliverables/
+docs/contest_source/
+docs/PORTSAFE_IDEA_DRAFT.md
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key

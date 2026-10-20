@@ -1,0 +1,208 @@
+{
+  "data_type": "SYNTHETIC_DEMO",
+  "model_type": "UNVALIDATED_RULES",
+  "seed": 42,
+  "scenario": "standard",
+  "workers": [
+    {
+      "id": "W01",
+      "qualifications": [
+        "일반",
+        "지게차"
+      ],
+      "hours": 2,
+      "fatigue": 20,
+      "load": 50,
+      "max_hours": 8,
+      "max_fatigue": 80,
+      "max_load": 300
+    },
+    {
+      "id": "W02",
+      "qualifications": [
+        "일반"
+      ],
+      "hours": 2,
+      "fatigue": 26,
+      "load": 60,
+      "max_hours": 8,
+      "max_fatigue": 80,
+      "max_load": 300
+    },
+    {
+      "id": "W03",
+      "qualifications": [
+        "일반",
+        "크레인"
+      ],
+      "hours": 2,
+      "fatigue": 32,
+      "load": 70,
+      "max_hours": 8,
+      "max_fatigue": 80,
+      "max_load": 300
+    },
+    {
+      "id": "W04",
+      "qualifications": [
+        "일반",
+        "지게차"
+      ],
+      "hours": 2,
+      "fatigue": 38,
+      "load": 80,
+      "max_hours": 8,
+      "max_fatigue": 80,
+      "max_load": 300
+    },
+    {
+      "id": "W05",
+      "qualifications": [
+        "일반",
+        "크레인"
+      ],
+      "hours": 2,
+      "fatigue": 44,
+      "load": 90,
+      "max_hours": 8,
+      "max_fatigue": 80,
+      "max_load": 300
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "qualification": "일반",
+      "duration": 1.5,
+      "weight": 34,
+      "repetition": 23,
+      "posture": 55,
+      "heat": 35,
+      "priority": 1
+    },
+    {
+      "id": "T02",
+      "qualification": "지게차",
+      "duration": 0.5,
+      "weight": 37,
+      "repetition": 33,
+      "posture": 89,
+      "heat": 25,
+      "priority": 2
+    },
+    {
+      "id": "T03",
+      "qualification": "크레인",
+      "duration": 1.5,
+      "weight": 74,
+      "repetition": 24,
+      "posture": 23,
+      "heat": 25,
+      "priority": 3
+    },
+    {
+      "id": "T04",
+      "qualification": "일반",
+      "duration": 0.5,
+      "weight": 49,
+      "repetition": 84,
+      "posture": 23,
+      "heat": 55,
+      "priority": 1
+    },
+    {
+      "id": "T05",
+      "qualification": "지게차",
+      "duration": 0.5,
+      "weight": 89,
+      "repetition": 73,
+      "posture": 48,
+      "heat": 48,
+      "priority": 2
+    },
+    {
+      "id": "T06",
+      "qualification": "크레인",
+      "duration": 1.5,
+      "weight": 55,
+      "repetition": 20,
+      "posture": 40,
+      "heat": 64,
+      "priority": 3
+    },
+    {
+      "id": "T07",
+      "qualification": "일반",
+      "duration": 1,
+      "weight": 63,
+      "repetition": 55,
+      "posture": 39,
+      "heat": 33,
+      "priority": 1
+    },
+    {
+      "id": "T08",
+      "qualification": "지게차",
+      "duration": 1,
+      "weight": 33,
+      "repetition": 31,
+      "posture": 68,
+      "heat": 26,
+      "priority": 2
+    },
+    {
+      "id": "T09",
+      "qualification": "크레인",
+      "duration": 1,
+      "weight": 64,
+      "repetition": 53,
+      "posture": 25,
+      "heat": 66,
+      "priority": 3
+    },
+    {
+      "id": "T10",
+      "qualification": "일반",
+      "duration": 1,
+      "weight": 88,
+      "repetition": 35,
+      "posture": 68,
+      "heat": 25,
+      "priority": 1
+    },
+    {
+      "id": "T11",
+      "qualification": "지게차",
+      "duration": 1.5,
+      "weight": 57,
+      "repetition": 66,
+      "posture": 44,
+      "heat": 65,
+      "priority": 2
+    },
+    {
+      "id": "T12",
+      "qualification": "크레인",
+      "duration": 0.5,
+      "weight": 25,
+      "repetition": 49,
+      "posture": 57,
+      "heat": 25,
+      "priority": 3
+    }
+  ],
+  "baseline": {
+    "T01": "W01",
+    "T02": "W02",
+    "T03": "W01",
+    "T04": "W02",
+    "T05": "W01",
+    "T06": "W02",
+    "T07": "W01",
+    "T08": "W02",
+    "T09": "W01",
+    "T10": "W02",
+    "T11": "W01",
+    "T12": "W02"
+  }
+}

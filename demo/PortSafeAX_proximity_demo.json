@@ -1,0 +1,226 @@
+{
+  "front": {
+    "title": "전방 접근",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": 10,
+      "vx": 0,
+      "vy": -2,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "ALERT",
+    "label": "주의 / 합성 경고 조건 충족",
+    "reason": "시연 경계 안에 있거나, 일정 상대속도 가정에서 관측 구간 내 경계 진입이 예상됩니다.",
+    "direction": "전방",
+    "distance_m": 10.0,
+    "closest_time_s": 5.0,
+    "closest_distance_m": 0.0,
+    "alert_entry_s": 4.0,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "rear": {
+    "title": "후방 접근",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": -6,
+      "vx": 0,
+      "vy": 2,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "ALERT",
+    "label": "주의 / 합성 경고 조건 충족",
+    "reason": "시연 경계 안에 있거나, 일정 상대속도 가정에서 관측 구간 내 경계 진입이 예상됩니다.",
+    "direction": "후방",
+    "distance_m": 6.0,
+    "closest_time_s": 3.0,
+    "closest_distance_m": 0.0,
+    "alert_entry_s": 2.0,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "crossing": {
+    "title": "측면 교차",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 6,
+      "y": 0,
+      "vx": -2,
+      "vy": 0,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "ALERT",
+    "label": "주의 / 합성 경고 조건 충족",
+    "reason": "시연 경계 안에 있거나, 일정 상대속도 가정에서 관측 구간 내 경계 진입이 예상됩니다.",
+    "direction": "우측",
+    "distance_m": 6.0,
+    "closest_time_s": 3.0,
+    "closest_distance_m": 0.0,
+    "alert_entry_s": 2.0,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "passing": {
+    "title": "옆으로 통과",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 5,
+      "y": 10,
+      "vx": 0,
+      "vy": -2,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "NO_ALERT",
+    "label": "이 시연 규칙의 경고 조건 미충족",
+    "reason": "계산 구간 내 시연 경계 진입이 없습니다. 안전 확인이나 다른 방향의 무위험을 뜻하지 않습니다.",
+    "direction": "전방",
+    "distance_m": 11.180339887498949,
+    "closest_time_s": 5.0,
+    "closest_distance_m": 5.0,
+    "alert_entry_s": null,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "receding": {
+    "title": "멀어지는 차량",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": 5,
+      "vx": 0,
+      "vy": 2,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "NO_ALERT",
+    "label": "이 시연 규칙의 경고 조건 미충족",
+    "reason": "계산 구간 내 시연 경계 진입이 없습니다. 안전 확인이나 다른 방향의 무위험을 뜻하지 않습니다.",
+    "direction": "전방",
+    "distance_m": 5.0,
+    "closest_time_s": 0.0,
+    "closest_distance_m": 5.0,
+    "alert_entry_s": null,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "near_static": {
+    "title": "가까운 정지 물체",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": 1,
+      "vx": 0,
+      "vy": 0,
+      "health": "ok",
+      "age": 0.0
+    },
+    "status": "ALERT",
+    "label": "주의 / 합성 경고 조건 충족",
+    "reason": "시연 경계 안에 있거나, 일정 상대속도 가정에서 관측 구간 내 경계 진입이 예상됩니다.",
+    "direction": "전방",
+    "distance_m": 1.0,
+    "closest_time_s": 0.0,
+    "closest_distance_m": 1.0,
+    "alert_entry_s": 0.0,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "blocked": {
+    "title": "센서 가림",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": 10,
+      "vx": 0,
+      "vy": -2,
+      "health": "blocked",
+      "age": 0.0
+    },
+    "status": "UNKNOWN",
+    "label": "판단 불가 / 감지 제한",
+    "reason": "센서 상태 이상 또는 관측 유효시간 초과. 위치·경로를 판정하지 않습니다.",
+    "direction": null,
+    "distance_m": null,
+    "closest_time_s": null,
+    "closest_distance_m": null,
+    "alert_entry_s": null,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  },
+  "stale": {
+    "title": "오래된 관측",
+    "data_origin": "SIMULATED",
+    "model_type": "UNVALIDATED_RULES",
+    "version": "proximity-demo-0.1",
+    "config": {
+      "horizon_s": 6.0,
+      "clearance_m": 2.0,
+      "max_age_s": 0.5
+    },
+    "input": {
+      "x": 0,
+      "y": 10,
+      "vx": 0,
+      "vy": -2,
+      "health": "ok",
+      "age": 2
+    },
+    "status": "UNKNOWN",
+    "label": "판단 불가 / 감지 제한",
+    "reason": "센서 상태 이상 또는 관측 유효시간 초과. 위치·경로를 판정하지 않습니다.",
+    "direction": null,
+    "distance_m": null,
+    "closest_time_s": null,
+    "closest_distance_m": null,
+    "alert_entry_s": null,
+    "limits": "합성 상대 위치·속도를 정답으로 입력한 점 표적 계산입니다. 센서 검출·AI·차량 제동·현장 안전 검증이 아닙니다."
+  }
+}
